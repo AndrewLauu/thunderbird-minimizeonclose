@@ -1,0 +1,28 @@
+name: Build and Release with Makefile
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Build with Makefile
+      run: make
+
+    - name: Upload Binary to Release
+      uses: softprops/action-gh-release@v2
+      # env:
+        # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        files: ./dist/minimizeonclose.xpi
+        make_latest: true
+        tag_name: "v1.0"
+        
+    - name: Clean up
+      run: make clobber
