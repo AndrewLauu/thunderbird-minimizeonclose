@@ -25,3 +25,4 @@ jobs:
       with:
         files: ./dist/minimizeonclose.xpi
         make_latest: true
+        tag_name: "release"
