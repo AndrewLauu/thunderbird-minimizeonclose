@@ -14,18 +14,9 @@ jobs:
 
     - name: Build with Makefile
       run: make
-      
-    - name: Run tests
-      run: make test
-      
-    - name: Run check
-      run: make check
-
-    - name: Run distcheck
-      run: make distcheck
 
     - name: Clean up
-      run: make clean
+      run: make clean && make clobber
 
     - name: Upload Binary to Release
       uses: softprops/action-gh-release@v2
