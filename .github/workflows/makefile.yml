@@ -15,9 +15,6 @@ jobs:
     - name: Build with Makefile
       run: make
 
-    - name: Clean up
-      run: make clean && make clobber
-
     - name: Upload Binary to Release
       uses: softprops/action-gh-release@v2
       # env:
@@ -25,4 +22,7 @@ jobs:
       with:
         files: ./dist/minimizeonclose.xpi
         make_latest: true
-        tag_name: "release"
+        tag_name: "v1.0"
+        
+    - name: Clean up
+      run: make clobber
